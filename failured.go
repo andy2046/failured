@@ -101,7 +101,7 @@ func (d *Detector) RegisterHeartbeat(now ...int64) {
 	}
 
 	d.samples[d.nextIndex&d.mask] = float64(tt - d.freshness)
-	d.nextIndex += 1
+	d.nextIndex++
 	d.freshness = tt
 }
 
@@ -132,7 +132,7 @@ func (d *Detector) FailureProbability(now ...int64) float64 {
 
 	for i := uint64(0); i < total; i++ {
 		if d.samples[i] <= t {
-			count += 1
+			count++
 		}
 	}
 
